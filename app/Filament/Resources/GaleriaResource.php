@@ -37,7 +37,7 @@ class GaleriaResource extends Resource
             Select::make('status')
                 ->options([
                     'ativo' => 'Ativo',
-                    'inativo' => 'Inativo', 
+                    'inativo' => 'Inativo',
                 ])->default('ativo')
         ])->columns(1);
     }
