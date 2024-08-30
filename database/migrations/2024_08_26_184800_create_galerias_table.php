@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('galerias', function (Blueprint $table) {
             $table->id();
-            $table->string('path');
-            $table->enum('tipo', ['foto', 'video']);
+            $table->json('path');
+            $table->string('descricao');
             $table->enum('status', ['ativo', 'inativo'])->default('ativo');
             $table->timestamps();
         });

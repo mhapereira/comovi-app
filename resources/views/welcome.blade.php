@@ -180,34 +180,41 @@
 			</section>
 
 			{{-- Rodape --}}
-			<footer id="footer" class="bg-dark text-white py-4">
+			<footer id="footer" class="bg-dark text-white pt-4">
 				<div class="container">
 					<div class="row montserrat">
 						<!-- Coluna 1: Título -->
-						<div class="col-md-4">
-							<p class="display-7 montserrat-bold">
-								Obrigado por seu apoio e <br>
-								confiança na Comivi!
-							</p>
+						<div class="col-md-4 col-lg-6">
+							<h5 class="montserrat-bold">
+								Obrigado por seu apoio e
+								confiança na Comovi!
+							</h5>
 						</div>
 						<!-- Coluna 2: Endereço -->
-						<div class="col-md-4">
+						<div class="col-md-4 col-lg-3">
 							<p class="montserrat-bold">Endereço</p>
 							<p class="small">
 								Avenida Luiz Barichello, 644<br>
 								Jardim Progresso<br>
-								Guariba - SP
+								Guariba - SP <br>
+								<strong>CNPJ</strong>
+								03.674.621/0001-49
 							</p>
 						</div>
 						<!-- Coluna 3: Contatos -->
-						<div class="col-md-4">
+						<div class="col-md-4 col-lg-3">
 							<p class="montserrat-bold">Contatos</p>
 							@foreach ($contatos as $contato)
-							<p>
-								Telefone: {{ $contato->telefone }}<br>
-								Email: {{ $contato->email }}
+							<p  class="small">
+								{{ $contato->email }} <br>
+								{{ $contato->telefone }}								
 							</p>
 							@endforeach
+						</div>
+					</div>
+					<div class="row mt-4">
+						<div class="col">
+							<p class="text-center small">© 2024 Todos os direitos reservados | Desenvolvido por Mateus Pereira.</p>
 						</div>
 					</div>
 				</div>
