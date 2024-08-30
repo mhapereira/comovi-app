@@ -11,6 +11,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\TextInputColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -34,19 +35,19 @@ class ContatoResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('email')->label('E-mail'),
-                TextColumn::make('telefone')
+                TextInputColumn::make('email')->label('E-mail'),
+                TextInputColumn::make('telefone')
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\BulkActionGroup::make([
+                //     Tables\Actions\DeleteBulkAction::make(),
+                // ]),
             ]);
     }
 
@@ -62,7 +63,7 @@ class ContatoResource extends Resource
         return [
             'index' => Pages\ListContatos::route('/'),
             // 'create' => Pages\CreateContato::route('/create'),
-            'edit' => Pages\EditContato::route('/{record}/edit'),
+            // 'edit' => Pages\EditContato::route('/{record}/edit'),
         ];
     }
 }

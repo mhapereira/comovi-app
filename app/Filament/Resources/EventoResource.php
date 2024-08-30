@@ -15,10 +15,13 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class EventoResource extends Resource
 {
@@ -30,15 +33,15 @@ class EventoResource extends Resource
     {
         return $form
             ->schema([
-                FileUpload::make('path')->label('Imagem')
+                FileUpload::make('path')->label('Capa')
                 ->image()
                 ->directory('eventos')
                 ->imageCropAspectRatio('4:3')
                 ->imageEditor(),
                 TextInput::make('titulo')->label('Título')
-                ->required()
-                ->live(debounce: 500),
-                Textarea::make('descricao')->label('Descrição'),
+                ->required(),
+                Textarea::make('descricao')->label('Descrição')
+                ->maxLength(50)->Required(),
                 DateTimePicker::make('data')
                 ->seconds(false)
                 ->required(),
@@ -50,7 +53,7 @@ class EventoResource extends Resource
                 ->options([
                     'ativo' => 'Ativo',
                     'inativo' => 'Inativo',
-                ])->default('ativo')
+                ])->default('ativo')->required(),
             ])->columns(1);
     }
 
@@ -58,23 +61,36 @@ class EventoResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('path')->label('Imagem'),
-                TextColumn::make('titulo')->label('Título'),
-                TextColumn::make('descricao')->label('Descrição'),
-                TextColumn::make('data')->dateTime(),
-                TextColumn::make('valor')->money('BRL'),
-                TextColumn::make('status')
+                ImageColumn::make('path')->label('Capa'),
+                TextColumn::make('titulo')->label('Título')
+                ->searchable()->sortable(),
+                TextColumn::make('descricao')->label('Descrição')
+                ->searchable()->sortable(),
+                TextColumn::make('data')->dateTime()
+                ->searchable()->sortable(),
+                TextColumn::make('valor')->money('BRL')
+                ->searchable()->sortable(),
+                SelectColumn::make('status')
+                ->options([
+                    'ativo' => 'Ativo',
+                    'inativo' => 'Inativo',
+                ])->rules(['required'])
+                ->searchable()->sortable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('status')
+                ->options([
+                    'ativo' => 'Ativo',
+                    'inativo' => 'Inativo',
+                ])
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\BulkActionGroup::make([
+                //     Tables\Actions\DeleteBulkAction::make(),
+                // ]),
             ]);
     }
 

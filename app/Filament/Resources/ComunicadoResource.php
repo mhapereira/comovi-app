@@ -12,7 +12,9 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -27,13 +29,14 @@ class ComunicadoResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('titulo')->label('Título'),
-                Textarea::make('descricao')->label('Descrição'),
+                TextInput::make('titulo')->label('Título')->required(),
+                Textarea::make('descricao')->label('Descrição')
+                ->maxLength(50)->required(),
                 Select::make('status')
                 ->options([
                     'ativo' => 'Ativo',
                     'inativo' => 'Inativo',
-                ])->default('ativo')
+                ])->default('ativo')->required()
             ])->columns(1);
     }
 
@@ -41,20 +44,31 @@ class ComunicadoResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('titulo')->label('Título'),
-                TextColumn::make('descricao')->label('Descrição'),
-                TextColumn::make('status')
+                TextColumn::make('titulo')->label('Título')
+                ->searchable()->sortable(),
+                TextColumn::make('descricao')->label('Descrição')
+                ->searchable()->sortable(),
+                SelectColumn::make('status')
+                ->options([
+                    'ativo' => 'Ativo',
+                    'inativo' => 'Inativo',
+                ])->rules(['required'])
+                ->searchable()->sortable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('status')
+                ->options([
+                    'ativo' => 'Ativo',
+                    'inativo' => 'Inativo',
+                ])
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\BulkActionGroup::make([
+                //     Tables\Actions\DeleteBulkAction::make(),
+                // ]),
             ]);
     }
 
