@@ -39,13 +39,13 @@
 								<li class="nav-item">
 									<a class="nav-link" aria-current="page" href="#sobre">Sobre nós</a>
 								</li>
-								<li class="nav-item">
+								<li class="nav-item @if($galeria->isEmpty()) d-none @endif">
 									<a class="nav-link" href="#galeria">Galeria</a>
 								</li>
-								<li class="nav-item">
+								<li class="nav-item @if($eventos->isEmpty()) d-none @endif">
 									<a class="nav-link" href="#eventos">Eventos</a>
 								</li>
-								<li class="nav-item">
+								<li class="nav-item @if($comunicados->isEmpty()) d-none @endif">
 									<a class="nav-link" href="#comunicado">Comunicado</a>
 								</li>
 								<li class="nav-item">
@@ -88,10 +88,10 @@
 
 							@foreach ($comunicados as $comunicado)
 								<div class="swiper-slide my-auto">
-									<div class="card text-small text-warning-emphasis bg-warning-subtle border border-warning-subtle">
+									<div class="card text-small text-warning-emphasis bg-warning-subtle border border-warning-subtle" data-bs-toggle="modal" data-bs-target="#comunicadoModal{{ $comunicado->id }}">
 										<div class="card-body text-center">
 											<h5 class="card-title montserrat-bold">{{ $comunicado->titulo }}</h5>
-											<p class="card-text mb-0">{{ $comunicado->descricao }}</p>
+											<p class="card-text mb-0">{{ Str::limit($comunicado->descricao, 30) }}</p>
 										</div>
 									</div>
 								</div>
@@ -100,8 +100,25 @@
 						</div>
 					</div>
 				</div>
-			</section>
 
+				<!-- Modals -->
+				@foreach ($comunicados as $comunicado)
+				<div class="modal fade" id="comunicadoModal{{ $comunicado->id }}" tabindex="-1" aria-labelledby="comunicadoModalLabel{{ $comunicado->id }}" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered"> <!-- Centraliza o modal na tela -->
+						<div class="modal-content text-small text-warning-emphasis bg-warning-subtle border border-warning-subtle"> <!-- Aplica o mesmo design do card -->
+							<div class="modal-header">
+								<h5 class="modal-title montserrat-bold" id="comunicadoModalLabel{{ $comunicado->id }}">{{ $comunicado->titulo }}</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body text-center">
+								{{ $comunicado->descricao }}
+							</div>
+						</div>
+					</div>
+				</div>
+				@endforeach
+			</section>
+			
 			{{-- Sobre nós --}}
 			<div class="container text-center my-5 pb-5" id="sobre">
 				<div class="w-lg-75 w-100 mx-auto">
@@ -130,21 +147,41 @@
 
 							@foreach ($eventos as $evento)
 							<div class="swiper-slide">
-									<div class="card">
-											<img src="{{ asset('storage/' . $evento->path ) }}" class="card-img-top" alt="Evento 1">
-											<div class="card-body">
-													<h5 class="card-title">{{ $evento->titulo }}</h5>
-													<p class="card-text">{{ $evento->descricao }}</p>
-													<p class="card-text"><small class="text-muted">Data: {{ \Carbon\Carbon::parse($evento->data)->format('d/m/Y H:i') }}</small></p>
-													<p class="card-text"><strong>R$ {{ number_format($evento->valor, 2, ',', '.') }}</strong></p>
-											</div>
+								<div class="card" data-bs-toggle="modal" data-bs-target="#eventoModal{{ $evento->id }}">
+									<img src="{{ asset('storage/' . $evento->path ) }}" class="card-img-top" alt="Evento 1">
+									<div class="card-body">
+										<h5 class="card-title">{{ $evento->titulo }}</h5>
+										<p class="card-text">{{ Str::limit($evento->descricao, 45) }}</p>
+										<p class="card-text"><small class="text-muted">Data: {{ \Carbon\Carbon::parse($evento->data)->format('d/m/Y H:i') }}</small></p>
+										<p class="card-text"><strong>R$ {{ number_format($evento->valor, 2, ',', '.') }}</strong></p>
 									</div>
+								</div>
 							</div>
 							@endforeach
 
 						</div>
 					</div>
 				</div>
+
+				<!-- Modal -->
+				@foreach ($eventos as $evento)
+				<div class="modal fade" id="eventoModal{{ $evento->id }}" tabindex="-1" aria-labelledby="eventoModalLabel{{ $evento->id }}" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title montserrat-bold" id="eventoModalLabel{{ $evento->id }}">{{ $evento->titulo }}</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<img src="{{ asset('storage/' . $evento->path ) }}" class="img-fluid mb-3" alt="Evento {{ $evento->titulo }}">
+								<p>{{ $evento->descricao }}</p>
+								<p><small class="text-muted">Data: {{ \Carbon\Carbon::parse($evento->data)->format('d/m/Y H:i') }}</small></p>
+								<p><strong>R$ {{ number_format($evento->valor, 2, ',', '.') }}</strong></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				@endforeach
 			</section>
 
 			{{-- Galeria --}}

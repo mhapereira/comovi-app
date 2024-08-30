@@ -41,7 +41,7 @@ class EventoResource extends Resource
                 TextInput::make('titulo')->label('Título')
                 ->required(),
                 Textarea::make('descricao')->label('Descrição')
-                ->maxLength(50)->Required(),
+                ->Required(),
                 DateTimePicker::make('data')
                 ->seconds(false)
                 ->required(),

@@ -31,7 +31,7 @@ class ComunicadoResource extends Resource
             ->schema([
                 TextInput::make('titulo')->label('Título')->required(),
                 Textarea::make('descricao')->label('Descrição')
-                ->maxLength(50)->required(),
+                ->required(),
                 Select::make('status')
                 ->options([
                     'ativo' => 'Ativo',
