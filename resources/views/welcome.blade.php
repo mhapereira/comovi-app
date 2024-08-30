@@ -153,7 +153,7 @@
 										<h5 class="card-title">{{ $evento->titulo }}</h5>
 										<p class="card-text">{{ Str::limit($evento->descricao, 45) }}</p>
 										<p class="card-text"><small class="text-muted">Data: {{ \Carbon\Carbon::parse($evento->data)->format('d/m/Y H:i') }}</small></p>
-										<p class="card-text"><strong>R$ {{ number_format($evento->valor, 2, ',', '.') }}</strong></p>
+										<p class="card-text @if($evento->valor == 0) d-none @endif"><strong>R$ {{ number_format($evento->valor, 2, ',', '.') }}</strong></p>
 									</div>
 								</div>
 							</div>
