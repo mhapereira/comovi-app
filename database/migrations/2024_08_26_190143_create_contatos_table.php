@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('contatos', function (Blueprint $table) {
             $table->id();
-            $table->string('email'); 
+            $table->string('email');
             $table->text('telefone');
             $table->timestamps();
         });
