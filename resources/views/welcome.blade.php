@@ -4,7 +4,40 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Comovi</title>
+		<title>Comovi</title>
+		<meta name="description" content="Descubra como é viver com plenitude e alegria na melhor fase da vida. 
+								Junte-se a nós em atividades enriquecedoras, eventos sociais, 
+								e momentos de aprendizado que promovem saúde, bem-estar e amizade.">
+		<meta name="keywords" content="terceira idade, melhor idade, guariba">
+		<meta name="robots" content="index, follow">
+		
+		<!-- Open Graph -->
+		<meta property="og:title" content="Comovi">
+		<meta property="og:description" content="Descubra como é viver com plenitude e alegria na melhor fase da vida. 
+								Junte-se a nós em atividades enriquecedoras, eventos sociais, 
+								e momentos de aprendizado que promovem saúde, bem-estar e amizade.">
+		<meta property="og:image" content="{{ asset('storage/image_ia/kv_inicial.png') }}">
+		<meta property="og:url" content="URL da Página">
+		<meta property="og:type" content="website">
+	
+		<!-- Twitter Cards -->
+		<meta name="twitter:card" content="{{ asset('storage/image_ia/kv_inicial.png') }}">
+		<meta name="twitter:title" content="Comovi">
+		<meta name="twitter:description" content="Descubra como é viver com plenitude e alegria na melhor fase da vida. 
+								Junte-se a nós em atividades enriquecedoras, eventos sociais, 
+								e momentos de aprendizado que promovem saúde, bem-estar e amizade.">
+		<meta name="twitter:image" content="{{ asset('storage/image_ia/kv_inicial.png') }}">
+	
+		<!-- Structured Data -->
+		<script type="application/ld+json">
+		{
+		  "@context": "https://comovimelhoridade.org",
+		  "@type": "WebPage",
+		  "name": "Nome da Página",
+		  "description": "Descrição da Página",
+		  "url": "URL da Página"
+		}
+		</script>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
