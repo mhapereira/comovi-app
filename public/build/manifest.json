@@ -16,14 +16,23 @@
     "src": "node_modules/lightbox2/dist/images/prev.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-RyeUjY_i.css",
+    "file": "assets/app-CMOE-jNs.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-qFEMK8rS.js",
+    "file": "assets/app-c2oiJuMU.js",
     "name": "app",
     "src": "resources/js/app.js",
-    "isEntry": true
+    "isEntry": true,
+    "css": [
+      "assets/app-BpGljPqV.css"
+    ],
+    "assets": [
+      "assets/loading-BY_-FGaJ.gif",
+      "assets/prev-BVHqDsrk.png",
+      "assets/next-QVcNtdNi.png",
+      "assets/close-DeJujm55.png"
+    ]
   }
 }
