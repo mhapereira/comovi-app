@@ -23,7 +23,11 @@ class InstitutoResource extends Resource
 {
     protected static ?string $model = Instituto::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-home-modern';
+
+    protected static ?string $navigationLabel = 'Transparência';
+
+    protected static ?int $navigationSort = 7;
 
     public static function form(Form $form): Form
     {

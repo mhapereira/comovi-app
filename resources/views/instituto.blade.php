@@ -1,6 +1,6 @@
 @extends('layout.app')
  
-@section('title', 'Sobre nós')
+@section('title', 'Transparência')
 
 <div class="container mt-5 pt-5">
 	{!! $instituto->sobre !!}

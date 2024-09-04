@@ -23,7 +23,9 @@ class ComunicadoResource extends Resource
 {
     protected static ?string $model = Comunicado::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-megaphone';
+
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {

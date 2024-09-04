@@ -20,7 +20,9 @@ class ContatoResource extends Resource
 {
     protected static ?string $model = Contato::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-phone';
+
+    protected static ?int $navigationSort = 6;
 
     public static function form(Form $form): Form
     {

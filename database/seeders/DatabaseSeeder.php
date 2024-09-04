@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
         //     'password' => 'Mh@P!2$24*',
         // ]);
 
-        Theme::factory()->create([
-            'primary_color' => '#ddd1cb',
-            'secondary_color' => '#352b2c',
-            'text_color' => '#1a1a1a',
-        ]);
+        // Theme::factory()->create([
+        //     'primary_color' => '#ddd1cb',
+        //     'secondary_color' => '#352b2c',
+        //     'text_color' => '#1a1a1a',
+        // ]);
 
         // Contato::factory()->create([
         //     'telefone' => '(16) 3251-1247',
