@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Contato;
+use App\Models\Theme;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,6 +21,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Mateus Pereira',
             'email' => 'mhapereira99@gmail.com',
             'password' => 'Mh@P!2$24*',
+        ]);
+
+        Theme::factory()->create([
+            'primary_color' => '#ddd1cb',
+            'secondary_color' => '#352b2c',
+            'text_color' => '#1a1a1a',
         ]);
 
         Contato::factory()->create([

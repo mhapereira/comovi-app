@@ -34,7 +34,7 @@ class GaleriaResource extends Resource
             ->directory('galeria')
             ->multiple()
             ->required(),
-            TextInput::make('descricao')->label('Descrição')
+            TextInput::make('descricao')->label('Evento')
             ->required(),
             Select::make('status')
                 ->options([
@@ -48,10 +48,10 @@ class GaleriaResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('descricao')->label('Descrição')
+                TextColumn::make('descricao')->label('Evento')
                 ->limit(50)
                 ->searchable()->sortable(),
-                ImageColumn::make('path')
+                ImageColumn::make('path')->label('Imagem')
                 ->stacked()
                 ->limit(5)
                 ->searchable()->sortable(),

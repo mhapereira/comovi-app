@@ -33,13 +33,13 @@ class InstitutoResource extends Resource
                 Repeater::make('ata')
                     ->schema([
                         TextInput::make('name')->required(),
-                        FileUpload::make('arquivo')->required()
+                        FileUpload::make('arquivo')->directory('transparencia')->required()
                     ])
                     ->columns(1),
                 Repeater::make('balanco')
                     ->schema([
                         TextInput::make('name')->required(),
-                        FileUpload::make('arquivo')->required()
+                        FileUpload::make('arquivo')->directory('transparencia')->required()
                     ])
                     ->columns(1)
             ])->columns(1);

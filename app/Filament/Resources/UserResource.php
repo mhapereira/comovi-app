@@ -2,23 +2,22 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ContatoResource\Pages;
-use App\Filament\Resources\ContatoResource\RelationManagers;
-use App\Models\Contato;
+use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\UserResource\RelationManagers;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\TextInputColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ContatoResource extends Resource
+class UserResource extends Resource
 {
-    protected static ?string $model = Contato::class;
+    protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -26,9 +25,12 @@ class ContatoResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('email')->label('E-mail'),
-                TextInput::make('telefone')->tel(),
-                TextInput::make('whatsapp')->tel()
+                TextInput::make('name')
+                ->required(),
+                TextInput::make('email')->email()
+                ->required(),
+                TextInput::make('password')->password()
+                ->required()
             ])->columns(1);
     }
 
@@ -36,15 +38,16 @@ class ContatoResource extends Resource
     {
         return $table
             ->columns([
-                TextInputColumn::make('email')->label('E-mail'),
-                TextInputColumn::make('telefone'),
-                TextInputColumn::make('whatsapp')
+                TextColumn::make('name')->label('Nome')
+                ->searchable()->sortable(),
+                TextColumn::make('email')->label('E-mail')
+                ->searchable()->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                // Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 // Tables\Actions\BulkActionGroup::make([
@@ -63,9 +66,9 @@ class ContatoResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListContatos::route('/'),
-            // 'create' => Pages\CreateContato::route('/create'),
-            // 'edit' => Pages\EditContato::route('/{record}/edit'),
+            'index' => Pages\ListUsers::route('/'),
+            'create' => Pages\CreateUser::route('/create'),
+            'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }

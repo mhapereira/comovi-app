@@ -1,14 +1,30 @@
 @extends('layout.app')
  
 @section('title', 'Comovi')
+<style>
+#inicio, #eventos {
+    background-color: {{ $theme->primary_color }};
+    color: {{ $theme->text_color }};
+}
+#inicio {
+	background-image: url('{{ asset("storage/{$theme->image}") }}');
+    background-size: cover; /* Ajusta o tamanho do background */
+    background-position: center; /* Centraliza o background */
+    background-repeat: no-repeat; /* Evita que o background se repita */
+}
 
+#comunicado, #footer {
+    background-color: {{ $theme->secondary_color }};
+}
+
+</style>
 {{-- Inicio --}}
 <section id="inicio">
 	<main class="container pt-5 mt-5">
 		<div class="row">
 			<!-- Imagem -->
-			<div class="col-12 col-lg-6 d-flex align-items-center">
-				<img  src="{{ asset('storage/image_ia/kv_inicial.png') }}" style="max-height: 500px" alt="Imagem Exemplo" class="img-fluid mx-auto">
+			<div class="col-12 col-lg-6 d-flex align-items-center"  style="min-height: 500px">
+				<img  src="{{ asset('storage/image_ia/kv_inicial.png') }}" style="max-height: 500px" alt="Imagem Exemplo" class="img-fluid mx-auto @if(!is_null($theme->image)) d-none @endif">
 			</div>
 			<!-- Texto -->
 			<div class="col-12 col-lg-6 d-flex flex-column justify-content-center p-4">
@@ -133,18 +149,6 @@
 <div class="container my-5 @if($galeria->isEmpty()) d-none @endif" id="galeria">
 	<h2 class="display-5 text-center mb-4 montserrat-bold py-5 my-5">Galeria</h2>
 	<div class="row g-2">
-
-		{{-- @foreach ($galeria as $galeri)
-		@foreach ($galeri->path as $path)
-		<div class="col-lg-3 col-sm-6">
-			<a href="{{ asset('storage/' . $path ) }}" data-lightbox="gallery">
-				<img src="{{ asset('storage/' . $path ) }}" alt="Imagem 1" 
-				style="width: 100%; height: auto; object-fit: cover; aspect-ratio: 4 / 3;"
-				class="img-fluid rounded">
-			</a>
-		</div>
-		@endforeach
-		@endforeach --}}
 
 		@foreach ($galeria as $galeri)
 			<div class="col-lg-3 col-sm-6">

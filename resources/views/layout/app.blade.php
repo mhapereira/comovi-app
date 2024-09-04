@@ -69,9 +69,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <div class="d-lg-flex d-block w-100 justify-content-end">
                         <ul class="navbar-nav">
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="{{ route('site.home') }}#sobre">Sobre nós</a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item @if($galeria->isEmpty()) d-none @endif">
                                 <a class="nav-link" href="{{ route('site.home') }}#galeria">Galeria</a>
                             </li>
@@ -85,7 +85,7 @@
                                 <a class="nav-link" href="{{ route('site.home') }}#contatos">Contato</a>
                             </li>
                             <li class="nav-item @if(is_null($instituto)) d-none @endif">
-                                <a class="nav-link" href="{{ route('site.instituto') }}">Instituto</a>
+                                <a class="nav-link" href="{{ route('site.instituto') }}">Sobre nós</a>
                             </li>
                         </ul>
                     </div>

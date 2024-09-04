@@ -7,6 +7,7 @@ use App\Models\Contato;
 use App\Models\Evento;
 use App\Models\Galeria;
 use App\Models\Instituto;
+use App\Models\Theme;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -19,9 +20,10 @@ class SiteController extends Controller
         $galeria = Galeria::where('status', 'ativo')->get();
         $contatos = Contato::find(1);
         $instituto = Instituto::find(1);
+        $theme = Theme::find(1);
 
         // Retorna a view 'welcome' com as galerias
-        return view('welcome', ['comunicados' => $comunicados, 'eventos' => $eventos, 'galeria' => $galeria, 'instituto' => $instituto, 'contatos' => $contatos]);
+        return view('welcome', ['theme' => $theme, 'comunicados' => $comunicados, 'eventos' => $eventos, 'galeria' => $galeria, 'instituto' => $instituto, 'contatos' => $contatos]);
     }
 
     public function instituicao()

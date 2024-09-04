@@ -25,13 +25,6 @@ html {
     scroll-behavior: smooth;
 }
 
-#inicio, #eventos {
-    background-color: #ddd1cb;
-}
-
-#comunicado, #footer {
-    background-color: #352b2c;
-}
 .swiper-wrapper {
     height: auto;
 }
