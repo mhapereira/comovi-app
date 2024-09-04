@@ -27,7 +27,8 @@ class ContatoResource extends Resource
         return $form
             ->schema([
                 TextInput::make('email')->label('E-mail'),
-                TextInput::make('telefone')
+                TextInput::make('telefone'),
+                TextInput::make('whatsapp')
             ])->columns(1);
     }
 
@@ -36,7 +37,8 @@ class ContatoResource extends Resource
         return $table
             ->columns([
                 TextInputColumn::make('email')->label('E-mail'),
-                TextInputColumn::make('telefone')
+                TextInputColumn::make('telefone'),
+                TextInputColumn::make('whatsapp')
             ])
             ->filters([
                 //

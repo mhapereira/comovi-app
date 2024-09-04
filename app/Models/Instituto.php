@@ -5,13 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contato extends Model
+class Instituto extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'email',
-        'telefone',
-        'whatsapp'
+        'sobre',
+        'ata',
+        'balanco',
+    ];
+
+    protected $casts = [
+        'ata' => 'array',
+        'balanco' => 'array',
     ];
 }

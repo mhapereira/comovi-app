@@ -49,9 +49,11 @@ class GaleriaResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('descricao')->label('Descrição')
+                ->limit(50)
                 ->searchable()->sortable(),
                 ImageColumn::make('path')
                 ->stacked()
+                ->limit(5)
                 ->searchable()->sortable(),
                 SelectColumn::make('status')
                 ->options([

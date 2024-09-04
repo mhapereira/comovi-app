@@ -45,8 +45,10 @@ class ComunicadoResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('titulo')->label('Título')
+                ->limit(20)
                 ->searchable()->sortable(),
                 TextColumn::make('descricao')->label('Descrição')
+                ->limit(50)
                 ->searchable()->sortable(),
                 SelectColumn::make('status')
                 ->options([

@@ -63,8 +63,10 @@ class EventoResource extends Resource
             ->columns([
                 ImageColumn::make('path')->label('Capa'),
                 TextColumn::make('titulo')->label('Título')
+                ->limit(20)
                 ->searchable()->sortable(),
                 TextColumn::make('descricao')->label('Descrição')
+                ->limit(50)
                 ->searchable()->sortable(),
                 TextColumn::make('data')->dateTime()
                 ->searchable()->sortable(),

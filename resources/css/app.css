@@ -1,5 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
-
+@import 'swiper/css';
+@import 'lightbox2/dist/css/lightbox.min.css';
+/* @import '~lightbox2/dist/css/lightbox.min.css'; */
 
 .montserrat{
   font-family: "Montserrat", sans-serif;
@@ -29,4 +31,7 @@ html {
 
 #comunicado, #footer {
     background-color: #352b2c;
+}
+.swiper-wrapper {
+    height: auto;
 }
