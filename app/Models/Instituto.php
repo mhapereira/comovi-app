@@ -12,11 +12,13 @@ class Instituto extends Model
     protected $fillable = [
         'sobre',
         'ata',
-        'balanco',
+        'instituto',
+        'docs',
     ];
 
     protected $casts = [
         'ata' => 'array',
-        'balanco' => 'array',
+        'instituto' => 'array',
+        'docs' => 'array',
     ];
 }

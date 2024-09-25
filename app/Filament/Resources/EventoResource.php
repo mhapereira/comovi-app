@@ -49,8 +49,7 @@ class EventoResource extends Resource
                 ->required(),
                 TextInput::make('valor')
                 ->numeric()
-                ->inputMode('decimal')
-                ->required(),
+                ->inputMode('decimal'),
                 Select::make('status')
                 ->options([
                     'ativo' => 'Ativo',

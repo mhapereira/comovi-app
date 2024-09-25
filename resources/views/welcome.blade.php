@@ -126,7 +126,7 @@
 
 	<!-- Modal -->
 	@foreach ($eventos as $evento)
-	<div class="modal fade" id="eventoModal{{ $evento->id }}" tabindex="-1" aria-labelledby="eventoModalLabel{{ $evento->id }}" aria-hidden="true">
+	<div class="modal fade text-dark" id="eventoModal{{ $evento->id }}" tabindex="-1" aria-labelledby="eventoModalLabel{{ $evento->id }}" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">

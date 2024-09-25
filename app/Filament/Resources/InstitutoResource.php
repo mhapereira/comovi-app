@@ -40,7 +40,13 @@ class InstitutoResource extends Resource
                         FileUpload::make('arquivo')->directory('transparencia')->required()
                     ])
                     ->columns(1),
-                Repeater::make('balanco')
+                Repeater::make('instituto')
+                    ->schema([
+                        TextInput::make('name')->required(),
+                        FileUpload::make('arquivo')->directory('transparencia')->required()
+                    ])
+                    ->columns(1),
+                Repeater::make('docs')->label('Documentos institucionais')
                     ->schema([
                         TextInput::make('name')->required(),
                         FileUpload::make('arquivo')->directory('transparencia')->required()
